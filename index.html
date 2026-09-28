@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ascend Book Club — Reading Library</title>
+<meta name="description" content="All books read by Ascend: The Great Books Podcast, in reading order, with episodes, guides and schedules.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=typography&v=3.4.17"></script>
+<script>
+tailwind.config = { theme: { extend: {
+colors: { olive: {50:'oklch(97.73% 0.0054 117.92)',100:'oklch(95.09% 0.0134 115.84)',200:'oklch(90.20% 0.0232 117.63)',300:'oklch(82.52% 0.0345 116.34)',400:'oklch(73.59% 0.0492 116.81)',500:'oklch(64.26% 0.0588 117.06)',600:'oklch(54.54% 0.0616 116.19)',700:'oklch(46.42% 0.0493 117.00)',800:'oklch(39.89% 0.0355 116.41)',900:'oklch(35.57% 0.0284 116.00)',950:'oklch(24.22% 0.0185 116.99)'},
+stone: {50:'oklch(98.48% 0.0013 106.42)',100:'oklch(96.99% 0.0013 106.42)',200:'oklch(92.32% 0.0026 48.72)',300:'oklch(86.87% 0.0043 56.37)',400:'oklch(71.61% 0.0091 56.26)',500:'oklch(55.34% 0.0116 58.07)',600:'oklch(44.44% 0.0096 73.64)',700:'oklch(37.41% 0.0087 67.56)',800:'oklch(26.85% 0.0063 34.30)',900:'oklch(21.61% 0.0061 56.04)'} },
+fontFamily: { display: ['Instrument Serif','serif'], sans: ['Inter','system-ui','sans-serif'] } } } };
+</script>
+<style>
+:root{ --bg:oklch(82.52% 0.0345 116.34); --surface:oklch(90.20% 0.0232 117.63); --border:oklch(73.59% 0.0492 116.81); --text:oklch(26.85% 0.0063 34.30); --text-light:oklch(55.34% 0.0116 58.07); --accent:oklch(46.42% 0.0493 117.00); --accent-fg:oklch(97.73% 0.0054 117.92); }
+body{font-family:'Inter',system-ui,sans-serif;background-color:var(--bg);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
+h1,h2,h3{font-family:'Instrument Serif',serif;line-height:1.2;}
+.cover{font-family:'Instrument Serif',serif;}
+.card{transition:transform .15s ease, box-shadow .15s ease;}
+.card:hover{transform:translateY(-3px);box-shadow:0 12px 32px -12px oklch(39.89% 0.0355 116.41 / .45);}
+</style>
+</head>
+<body class="min-h-screen">
+<nav class="sticky top-0 z-50 bg-olive-50/85 backdrop-blur-md border-b border-olive-200/60 text-stone-800 shadow-sm">
+<div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6"><div class="flex items-center justify-between h-14">
+<div class="flex items-center gap-1"><a href="./index.html" class="px-3 py-1.5 rounded-md text-sm font-medium bg-olive-600 text-olive-50">Ascend Library</a>
+<a href="https://www.theascent.io/archive" class="px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-olive-100 font-medium">Substack</a>
+<a href="https://www.youtube.com/@AscendTheGreatBooksPodcast" class="px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-olive-100 font-medium">YouTube</a>
+<a href="https://podcasts.apple.com/us/podcast/ascend-the-great-books-podcast/id1723116481" class="px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-olive-100 font-medium hidden sm:inline">Podcast</a></div>
+<div class="text-xs text-stone-500 hidden md:block">In reading order · 2024 → 2027</div>
+</div></div>
+</nav>
+
+<header class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 pt-10 pb-6">
+<h1 class="text-4xl sm:text-5xl">Ascend Book Club — what they read, in order</h1>
+<p class="mt-3 max-w-3xl text-stone-700">Slow reads of the great books with Dcn. Harrison Garlick. Each card is one reading block: cover, what it is, podcast span, real-life dates. Click a card for the ordered episode list, Q&amp;A guides, and links.</p>
+<div class="mt-4 flex flex-wrap gap-2 text-sm">
+<button data-f="all" class="flt px-3 py-1.5 rounded-full bg-olive-700 text-olive-50">All</button>
+<button data-f="homer" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Homer</button>
+<button data-f="tragedy" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Tragedy</button>
+<button data-f="comedy" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Comedy</button>
+<button data-f="plato" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Plato</button>
+<button data-f="dante" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Dante</button>
+<button data-f="other" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Other</button>
+<input id="q" placeholder="Filter… e.g. plato, dante, gawain" class="ml-auto px-3 py-1.5 rounded-full bg-olive-50 border border-olive-400 text-sm w-56">
+</div>
+</header>
+
+<main class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 pb-16">
+<div id="grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5"></div>
+<section class="mt-10">
+<h2 class="text-3xl mb-2">Other classic book clubs worth knowing</h2>
+<p class="text-sm text-stone-700 max-w-3xl">Ascend is not alone. If you like slow, guided reads of old books with a community, these are the closest peers — several share guests and scholars with Ascend.</p>
+<div class="mt-4 grid sm:grid-cols-2 gap-4 text-sm">
+<div class="bg-olive-50 border border-olive-400 rounded-xl p-4"><b>Online Great Books</b> — monthly Socratic seminars + podcast with Scott Hambrick &amp; Karl Schudt. Closest in spirit to Ascend; Schudt guests on Ascend's Republic finale. <a class="underline" href="https://onlinegreatbooks.com">onlinegreatbooks.com</a></div>
+<div class="bg-olive-50 border border-olive-400 rounded-xl p-4"><b>Close Reads</b> — book-club podcast from Goldberry Studios (ex-CiRCE Institute) with David Kern &amp; Heidi White; reads classics and moderns chapter by chapter. <a class="underline" href="https://closereads.substack.com">closereads.substack.com</a></div>
+<div class="bg-olive-50 border border-olive-400 rounded-xl p-4"><b>Cost of Glory</b> — Alex Petkas retells Plutarch's Lives for modern listeners; Ascend guests Petkas on Republic Book 8. <a class="underline" href="https://www.costofglory.com">costofglory.com</a></div>
+<div class="bg-olive-50 border border-olive-400 rounded-xl p-4"><b>Pints With Jack</b> — grew out of a real book club; reads C.S. Lewis chapter by chapter with scholar interviews. Good next step after Ascend's Narnia/Lewis essays. <a class="underline" href="https://www.pintswithjack.com">pintswithjack.com</a></div>
+<div class="bg-olive-50 border border-olive-400 rounded-xl p-4 sm:col-span-2"><b>Word on Fire Institute Book Club (Club 451)</b> — Bishop Barron's community reading spiritual classics and good novels (Benedict, Julian of Norwich, Percy, Lewis) with Zoom discussion. <a class="underline" href="https://www.wordonfire.org">wordonfire.org</a></div>
+</div>
+</section>
+<section class="mt-10 bg-olive-50 border border-olive-400 rounded-xl p-5 text-sm text-stone-700">
+<h2 class="text-2xl mb-2">How Ascend works</h2>
+<p>Weekly video/podcast + written Q&amp;A guide + monthly live Q&amp;A. Old site <code>thegreatbookspodcast.com</code> now redirects to <a class="underline" href="https://www.theascent.io">theascent.io</a>. Full chronological archive (309 posts) is at <a class="underline" href="https://www.theascent.io/archive">theascent.io/archive</a>. Dates below are first → last Substack post for that work, including the 2026 re-posts with guides.</p>
+</section>
+</main>
+<footer class="border-t border-olive-400/60 py-6 text-center text-xs text-stone-500">Built from theascent.io archive API · Sep 2026 · Covers are typographic placeholders, not publisher art.</footer>
+
+<script>
+const BOOKS = [
+{slug:"iliad",n:1,era:"homer",title:"Iliad",author:"Homer · c. 750 BC",dates:"Jan 2024 → Jun 2024",eps:"24 book episodes + intro + guides",blurb:"The rage of Achilles. War, honor, gods and glory — the fountainhead of the West.",init:"Il",bg:"#3d4a1e",fg:"#f4f1e4"},
+{slug:"odyssey",n:2,era:"homer",title:"Odyssey",author:"Homer · c. 725 BC",dates:"Jul 2024 → Dec 2024 · re-read May → Jul 2026",eps:"24 book episodes + 12-week re-read (8 group eps)",blurb:"Odysseus comes home. Temptation, fidelity, hospitality, and the peace-time hero.",init:"Od",bg:"#4a3a18",fg:"#faf3df"},
+{slug:"theogony",n:3,era:"other",title:"Theogony",author:"Hesiod · c. 700 BC",dates:"Jan 2025",eps:"1 discussion + guide",blurb:"Birth of the gods. Cosmos, order and piety in 1,000 lines.",init:"Th",bg:"#5a4a2a",fg:"#f7f2e2"},
+{slug:"oresteia",n:4,era:"tragedy",title:"Oresteia",author:"Aeschylus · 458 BC",dates:"Jan → Feb 2025",eps:"6 episodes: Agamemnon ×2, Libation Bearers ×2, Eumenides ×2",blurb:"Murder to justice. The trilogy that founds law out of vengeance.",init:"Or",bg:"#5c1f1f",fg:"#f9ecec"},
+{slug:"inferno",n:5,era:"dante",title:"Inferno",author:"Dante · 1320",dates:"Mar → Apr 2025 (Lent)",eps:"7 episodes: Cantos 1, 2–5, 6–11, 12–17, 18–25, 26–31, 32–34",blurb:"Down through Hell. Fraud, treachery and why lying wounds the soul.",init:"In",bg:"#7a2a12",fg:"#fdf0e3"},
+{slug:"prometheus",n:6,era:"tragedy",title:"Prometheus Bound",author:"Aeschylus",dates:"May 2025",eps:"1 discussion + 22-Q guide",blurb:"The chained Titan on liberty, tyranny and foresight.",init:"Pr",bg:"#6b2222",fg:"#fbeeee"},
+{slug:"antigone",n:7,era:"tragedy",title:"Antigone",author:"Sophocles · c. 441 BC",dates:"May 2025",eps:"2 discussions + 24-Q guide",blurb:"Burial vs. decree. Divine law against the city.",init:"An",bg:"#422a5c",fg:"#efe8fb"},
+{slug:"oedipus-rex",n:8,era:"tragedy",title:"Oedipus Rex",author:"Sophocles",dates:"May 2025",eps:"1 discussion + 15-Q guide",blurb:"Aristotle's best tragedy. Know thyself — too late.",init:"Oe",bg:"#2e3a5c",fg:"#e9eefc"},
+{slug:"oedipus-colonus",n:9,era:"tragedy",title:"Oedipus at Colonus",author:"Sophocles",dates:"Jun 2025",eps:"2 discussions + 18-Q guide",blurb:"The redemptive end of the Oedipus cycle.",init:"OC",bg:"#2f4a3a",fg:"#e8f3ec"},
+{slug:"bacchae",n:10,era:"tragedy",title:"The Bacchae",author:"Euripides · 405 BC",dates:"Jun 2025",eps:"2 discussions + 25-Q guide",blurb:"Mania, wine and the divine. Civilization on the edge.",init:"Ba",bg:"#5c2a4a",fg:"#fbe9f3"},
+{slug:"clouds",n:11,era:"comedy",title:"The Clouds",author:"Aristophanes · 423 BC",dates:"Jul 2025",eps:"1 discussion + 10-Q guide",blurb:"Socrates in a basket. Vulgar, crude, profound on education.",init:"Cl",bg:"#6a5a1a",fg:"#faf6dd"},
+{slug:"frogs",n:12,era:"comedy",title:"The Frogs",author:"Aristophanes · 405 BC",dates:"Jul 2025",eps:"1 discussion",blurb:"Dionysus judges poets. Comedy on the political role of poetry.",init:"Fr",bg:"#3a5a1a",fg:"#eef7dd"},
+{slug:"plato-foundations",n:13,era:"plato",title:"Plato: Socratic Foundations",author:"Plato · Alcibiades, Euthyphro, Apology, Crito, Phaedo, Meno, Gorgias",dates:"Jul → Nov 2025 · guides re-posted Sep 2026",eps:"12+ discussions + 15–37Q guides each",blurb:"How to read Plato: piety, death of Socrates, virtue, rhetoric.",init:"Pl",bg:"#1f3a5c",fg:"#e8f0fb"},
+{slug:"gawain",n:14,era:"other",title:"Sir Gawain and the Green Knight",author:"14th-c. Middle English",dates:"Dec 2025 → Feb 2026",eps:"3 episodes: Fitt 1, Fitts 2–3, Fitt 4 + Q&A",blurb:"Chivalry tested. Courage, courtesy and the green girdle.",init:"Ga",bg:"#1e4a3a",fg:"#e6f4ec"},
+{slug:"purgatorio",n:15,era:"dante",title:"Purgatorio",author:"Dante · 1320",dates:"Feb → Mar 2026 (Lent)",eps:"7 episodes: Intro, 1–5, 6–12, 13–17, 18–22, 23–27, 28–33",blurb:"Up the mountain. Pride to lust purged toward Beatrice.",init:"Pu",bg:"#8a5a12",fg:"#fdf3df"},
+{slug:"odyssey-reread",n:16,era:"homer",title:"Odyssey Re-read (groups)",author:"Homer — 12-week deep dive",dates:"May → Jul 2026",eps:"8 group discussions: 1–4, 5, 6–8, 9–10, 11–12, 13–16, 17–21, 22–24",blurb:"Second pass with scholars — translation guides, fatherhood, Penelope.",init:"O2",bg:"#4a3a18",fg:"#faf3df"},
+{slug:"plato-short",n:17,era:"plato",title:"Short Platonic Dialogues",author:"Hipparchus · Lovers · Hippias Minor · Ion",dates:"Aug 2026",eps:"4 discussions",blurb:"Greed, philosophy, lying and inspiration — strange short Socrates.",init:"SΔ",bg:"#274a5c",fg:"#e6f1f6"},
+{slug:"short-stories",n:18,era:"other",title:"Short Story September",author:"O'Connor · Howard · Gaiman · Melville",dates:"Sep 2026",eps:"Enduring Chill, Red Shadows, Chivalry, Bartleby",blurb:"Grace, barbarism, courtesy and the modern office — one story a week.",init:"SS",bg:"#4a4a4a",fg:"#f2f2f2"},
+{slug:"republic",n:19,era:"plato",title:"Republic (now reading)",author:"Plato — starts Oct 6 2026",dates:"Oct 2026 → Aug 2027",eps:"~40 episodes scheduled, 20+ scholars",blurb:"Justice, soul, city, the Good, the Cave. Their biggest read yet.",init:"Re",bg:"#123a5c",fg:"#e6eff8"},
+{slug:"paradiso",n:20,era:"dante",title:"Paradiso (next Lent)",author:"Dante — scheduled Lent 2027",dates:"Feb 9 → Apr 6 2027",eps:"TBD — breaks Republic Bk 4–5",blurb:"Final canticle. Light, glory and the vision of God.",init:"Pa",bg:"#9a6a10",fg:"#fff6dd"}
+];
+const grid = document.getElementById('grid');
+function card(b){
+return `<a href="./books/${b.slug}.html" data-era="${b.era}" data-title="${(b.title+' '+b.author).toLowerCase()}" class="card block bg-olive-50 border border-olive-400 rounded-xl overflow-hidden">
+<div class="cover flex items-center gap-4 p-5" style="background:${b.bg};color:${b.fg}">
+<div class="w-16 h-20 shrink-0 rounded border flex items-center justify-center text-3xl" style="border-color:${b.fg}55;background:rgba(255,255,255,.08)">${b.init}</div>
+<div><div class="text-xs opacity-80">#${b.n} · ${b.era.toUpperCase()} · ${b.dates}</div>
+<div class="text-2xl leading-tight">${b.title}</div>
+<div class="text-sm opacity-85">${b.author}</div></div></div>
+<div class="p-5"><p class="text-sm text-stone-700">${b.blurb}</p>
+<div class="mt-3 text-xs text-stone-600"><span class="font-semibold">Podcast:</span> ${b.eps}</div>
+<div class="mt-3 inline-block text-sm font-medium underline">Open reading page →</div></div></a>`;
+}
+grid.innerHTML = BOOKS.map(card).join('');
+const btns=[...document.querySelectorAll('.flt')]; const q=document.getElementById('q');
+function apply(){ const f=document.querySelector('.flt.bg-olive-700')?.dataset.f||'all'; const s=q.value.toLowerCase();
+[...grid.children].forEach(el=>{ const okF=f==='all'||el.dataset.era===f; const okQ=!s||el.dataset.title.includes(s); el.style.display=okF&&okQ?'':'none'; }); }
+btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.className='flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400');b.className='flt px-3 py-1.5 rounded-full bg-olive-700 text-olive-50';apply();});
+q.oninput=apply;
+</script>
+</body>
+</html>
