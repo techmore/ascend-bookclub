@@ -1,4 +1,4 @@
-name: Watch for new Ascend posts
+name: Watch for new posts (Ascend + Close Reads)
 
 on:
   schedule:
@@ -15,12 +15,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Check archive for new posts
+      - name: Check archives for new posts
         id: check
         run: |
           NEW_JSON=$(python3 scripts/check_new_posts.py --new-only)
           echo "new_json=$NEW_JSON" >> "$GITHUB_OUTPUT"
-          COUNT=$(echo "$NEW_JSON" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")
+          COUNT=$(echo "$NEW_JSON" | python3 -c "import json,sys; print(sum(len(v) for v in json.load(sys.stdin).values()))")
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
       - name: Open update issue
         if: steps.check.outputs.count != '0'
@@ -31,10 +31,14 @@ jobs:
           echo "$NEW_JSON" | python3 -c "
           import json, os
           new = json.loads(os.environ['NEW_JSON'])
-          lines = ['New posts on theascent.io since the last snapshot:', '']
-          for p in new:
-              lines.append(f\"- {p['date']} | [{p['title']}]({p['url']})\")
-          lines += ['', 'Update: run \`python3 scripts/check_new_posts.py --update\`, add episode links/pages, commit, push (Pages redeploys).']
+          labels = {'ascend': 'Ascend Book Club', 'closereads': 'Close Reads'}
+          lines = ['New posts since the last snapshot:', '']
+          for pub, posts in new.items():
+              lines.append(f\"## {labels.get(pub, pub)}\")
+              for p in posts:
+                  lines.append(f\"- {p['date']} | [{p['title']}]({p['url']})\")
+              lines.append('')
+          lines += ['Update: run \`python3 scripts/check_new_posts.py --update\`, file the new episodes on the site, commit, push (Pages redeploys).']
           open('/tmp/issue.md', 'w').write(chr(10).join(lines))
           "
-          gh issue create --title "New Ascend posts to file ($(date +%F))" --body-file /tmp/issue.md
+          gh issue create --title "New club posts to file ($(date +%F))" --body-file /tmp/issue.md
