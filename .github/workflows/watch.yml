@@ -1,0 +1,40 @@
+name: Watch for new Ascend posts
+
+on:
+  schedule:
+    - cron: "0 12 * * 1" # Mondays 12:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Check archive for new posts
+        id: check
+        run: |
+          NEW_JSON=$(python3 scripts/check_new_posts.py --new-only)
+          echo "new_json=$NEW_JSON" >> "$GITHUB_OUTPUT"
+          COUNT=$(echo "$NEW_JSON" | python3 -c "import json,sys; print(len(json.load(sys.stdin)))")
+          echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+      - name: Open update issue
+        if: steps.check.outputs.count != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NEW_JSON: ${{ steps.check.outputs.new_json }}
+        run: |
+          echo "$NEW_JSON" | python3 -c "
+          import json, os
+          new = json.loads(os.environ['NEW_JSON'])
+          lines = ['New posts on theascent.io since the last snapshot:', '']
+          for p in new:
+              lines.append(f\"- {p['date']} | [{p['title']}]({p['url']})\")
+          lines += ['', 'Update: run \`python3 scripts/check_new_posts.py --update\`, add episode links/pages, commit, push (Pages redeploys).']
+          open('/tmp/issue.md', 'w').write(chr(10).join(lines))
+          "
+          gh issue create --title "New Ascend posts to file ($(date +%F))" --body-file /tmp/issue.md
