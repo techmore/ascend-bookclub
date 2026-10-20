@@ -5,54 +5,44 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ascend Book Club — Reading Library</title>
 <meta name="description" content="All books read by Ascend: The Great Books Podcast, in reading order, with episodes, guides, recommended translations and order links.">
+<link rel="canonical" href="https://techmore.github.io/ascend-bookclub/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ascend Book Club Library">
+<meta property="og:title" content="Ascend Book Club — Reading Library">
+<meta property="og:description" content="All books read by Ascend: The Great Books Podcast, in reading order, with episodes, guides, recommended translations and order links.">
+<meta property="og:url" content="https://techmore.github.io/ascend-bookclub/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#cfd3b8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1e2117" media="(prefers-color-scheme: dark)">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com?plugins=typography&v=3.4.17"></script>
-<script>
-tailwind.config = { theme: { extend: {
-colors: { olive: {50:'oklch(97.73% 0.0054 117.92)',100:'oklch(95.09% 0.0134 115.84)',200:'oklch(90.20% 0.0232 117.63)',300:'oklch(82.52% 0.0345 116.34)',400:'oklch(73.59% 0.0492 116.81)',500:'oklch(64.26% 0.0588 117.06)',600:'oklch(54.54% 0.0616 116.19)',700:'oklch(46.42% 0.0493 117.00)',800:'oklch(39.89% 0.0355 116.41)',900:'oklch(35.57% 0.0284 116.00)',950:'oklch(24.22% 0.0185 116.99)'},
-stone: {50:'oklch(98.48% 0.0013 106.42)',100:'oklch(96.99% 0.0013 106.42)',200:'oklch(92.32% 0.0026 48.72)',300:'oklch(86.87% 0.0043 56.37)',400:'oklch(71.61% 0.0091 56.26)',500:'oklch(55.34% 0.0116 58.07)',600:'oklch(44.44% 0.0096 73.64)',700:'oklch(37.41% 0.0087 67.56)',800:'oklch(26.85% 0.0063 34.30)',900:'oklch(21.61% 0.0061 56.04)'} },
-fontFamily: { display: ['Instrument Serif','serif'], sans: ['Inter','system-ui','sans-serif'] } } } };
-</script>
-<style>
-:root{ --bg:oklch(82.52% 0.0345 116.34); --surface:oklch(90.20% 0.0232 117.63); --border:oklch(73.59% 0.0492 116.81); --text:oklch(26.85% 0.0063 34.30); --text-light:oklch(55.34% 0.0116 58.07); --accent:oklch(46.42% 0.0493 117.00); --accent-fg:oklch(97.73% 0.0054 117.92); }
-body{font-family:'Inter',system-ui,sans-serif;background-color:var(--bg);color:var(--text);font-size:15px;line-height:1.6;-webkit-font-smoothing:antialiased;}
-h1,h2,h3{font-family:'Instrument Serif',serif;line-height:1.2;}
-.cover{font-family:'Instrument Serif',serif;}
-.card{transition:transform .15s ease, box-shadow .15s ease;}
-.card:hover{transform:translateY(-3px);box-shadow:0 12px 32px -12px oklch(39.89% 0.0355 116.41 / .45);}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/site.css">
+<script src="https://cdn.tailwindcss.com?plugins=typography&amp;v=3.4.17"></script>
+<script src="./assets/tailwind.config.js"></script>
 </head>
 <body class="min-h-screen">
-<nav class="sticky top-0 z-50 bg-olive-50/85 backdrop-blur-md border-b border-olive-200/60 text-stone-800 shadow-sm">
-<div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6"><div class="flex items-center justify-between h-14">
-<div class="flex items-center gap-1"><a href="./index.html" class="px-3 py-1.5 rounded-md text-sm font-medium bg-olive-600 text-olive-50">Ascend Library</a>
-<a href="./start-here.html" class="px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-olive-100 font-medium">Start here</a>
-<a href="#order" class="px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-olive-100 font-medium">Order list</a>
-<a href="#clubs" class="px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-olive-100 font-medium hidden sm:inline">Clubs</a>
-<a href="https://www.youtube.com/@AscendTheGreatBooksPodcast" class="px-3 py-1.5 rounded-md text-sm text-stone-600 hover:bg-olive-100 font-medium">YouTube</a></div>
-<div class="text-xs text-stone-500 hidden md:block">In reading order · 2024 → 2027</div>
-</div></div>
-</nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav class="site-nav sticky top-0 z-50 bg-olive-50/85 backdrop-blur-md border-b border-olive-400/60 shadow-sm" aria-label="Site"><div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 flex items-center gap-1 text-sm"><a href="./index.html" class="px-3 py-1.5 rounded-md bg-olive-700 text-olive-50 font-medium" aria-current="page">Ascend Library</a><a href="./start-here.html" class="px-3 py-1.5 rounded-md hover:bg-olive-100 text-stone-700">Start here</a><a href="#order" class="px-3 py-1.5 rounded-md hover:bg-olive-100 text-stone-700">Order list</a><a href="#clubs" class="px-3 py-1.5 rounded-md hover:bg-olive-100 text-stone-700">Clubs</a><a href="https://www.youtube.com/@AscendTheGreatBooksPodcast" class="px-3 py-1.5 rounded-md hover:bg-olive-100 text-stone-700">YouTube</a></div></nav>
 
 <header class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 pt-10 pb-6">
 <h1 class="text-4xl sm:text-5xl">Ascend Book Club — what they read, in order</h1>
 <p class="mt-3 max-w-3xl text-stone-700">Slow reads of the great books with Dcn. Harrison Garlick. Each card is one reading block: cover art, what the book is about, the translation to buy, podcast span, and real-life dates. Click a card for the ordered episode list, Q&amp;A guides, and links. Buying? Jump to the <a class="underline" href="#order">order list</a> — one recommended edition per book, in reading order.</p>
-<div class="mt-4 flex flex-wrap gap-2 text-sm">
-<button data-f="all" class="flt px-3 py-1.5 rounded-full bg-olive-700 text-olive-50">All</button>
-<button data-f="homer" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Homer</button>
-<button data-f="tragedy" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Tragedy</button>
-<button data-f="comedy" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Comedy</button>
-<button data-f="plato" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Plato</button>
-<button data-f="dante" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Dante</button>
-<button data-f="other" class="flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400">Other</button>
-<input id="q" placeholder="Filter… e.g. plato, dante, gawain" class="ml-auto px-3 py-1.5 rounded-full bg-olive-50 border border-olive-400 text-sm w-56">
+<div class="mt-4 flex flex-wrap gap-2 text-sm" role="group" aria-label="Filter by category">
+<button type="button" data-f="all" aria-pressed="true" class="flt px-3 py-1.5 rounded-full">All</button>
+<button type="button" data-f="homer" aria-pressed="false" class="flt px-3 py-1.5 rounded-full">Homer</button>
+<button type="button" data-f="tragedy" aria-pressed="false" class="flt px-3 py-1.5 rounded-full">Tragedy</button>
+<button type="button" data-f="comedy" aria-pressed="false" class="flt px-3 py-1.5 rounded-full">Comedy</button>
+<button type="button" data-f="plato" aria-pressed="false" class="flt px-3 py-1.5 rounded-full">Plato</button>
+<button type="button" data-f="dante" aria-pressed="false" class="flt px-3 py-1.5 rounded-full">Dante</button>
+<button type="button" data-f="other" aria-pressed="false" class="flt px-3 py-1.5 rounded-full">Other</button>
+<label for="q" class="sr-only">Filter books</label><input id="q" type="search" autocomplete="off" placeholder="Filter… e.g. plato, dante, gawain" class="ml-auto px-3 py-1.5 rounded-full bg-olive-50 border border-olive-400 text-sm w-56">
 </div>
 </header>
 
 <div class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6"><div class="rounded-xl border border-olive-500 bg-olive-700 text-olive-50 text-sm px-4 py-2.5">Now reading: Plato's <b>Republic</b> starts Oct 6 — <a class="underline font-semibold" href="./books/republic.html#tracker">open the 40-episode tracker →</a></div></div>
-<main class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 pb-16">
+<main id="main" class="max-w-6xl mx-auto px-4 sm:px-5 lg:px-6 pb-16">
+<p id="filter-status" class="text-sm text-stone-600 mb-3" role="status" aria-live="polite"></p>
 <div id="grid" class="grid lg:grid-cols-2 gap-5"></div>
 
 <section id="order" class="mt-12">
@@ -78,8 +68,7 @@ h1,h2,h3{font-family:'Instrument Serif',serif;line-height:1.2;}
 <p>Weekly video/podcast + written Q&amp;A guide + monthly live Q&amp;A. Old site <code>thegreatbookspodcast.com</code> now redirects to <a class="underline" href="https://www.theascent.io">theascent.io</a>. Full chronological archive (309 posts) is at <a class="underline" href="https://www.theascent.io/archive">theascent.io/archive</a>. Dates below are first → last Substack post for that work, including the 2026 re-posts with guides. Cover art via Open Library; if a cover fails to load you see the monogram placeholder instead.</p>
 </section>
 </main>
-<footer class="border-t border-olive-400/60 py-6 text-center text-xs text-stone-500">Built from theascent.io archive API · Sep 2026 · Covers via Open Library.</footer>
-
+<footer class="site-footer">Ascend Book Club Library · Built from the <a href="https://www.theascent.io/archive">theascent.io archive</a> · Covers via <a href="https://openlibrary.org">Open Library</a> · <a href="https://github.com/techmore/ascend-bookclub">Source on GitHub</a></footer>
 <script>
 const BOOKS = [
 {slug:"iliad",n:1,era:"homer",title:"Iliad",author:"Homer · c. 750 BC",dates:"Jan 2024 → Jun 2024",eps:"24 book episodes + intro + after-hours",
@@ -217,10 +206,12 @@ ol.innerHTML = ORDER.map(o=>{
   return `<div class="p-3 flex flex-wrap items-center gap-2"><span class="font-semibold w-32 shrink-0">${o[0]}</span><span class="flex-1 min-w-[200px]">${o[1]}</span><a href="${link}" class="px-3 py-1 rounded-full bg-olive-700 text-olive-50 text-xs font-medium shrink-0">Amazon →</a></div>`;
 }).join('');
 const btns=[...document.querySelectorAll('.flt')]; const q=document.getElementById('q');
-function apply(){ const f=document.querySelector('.flt.bg-olive-700')?.dataset.f||'all'; const s=q.value.toLowerCase();
-[...grid.children].forEach(el=>{ const okF=f==='all'||el.dataset.era===f; const okQ=!s||el.dataset.title.includes(s); el.style.display=okF&&okQ?'':'none'; }); }
-btns.forEach(b=>b.onclick=()=>{btns.forEach(x=>x.className='flt px-3 py-1.5 rounded-full bg-olive-100 border border-olive-400');b.className='flt px-3 py-1.5 rounded-full bg-olive-700 text-olive-50';apply();});
-q.oninput=apply;
+const status=document.getElementById('filter-status');
+function apply(){ const f=document.querySelector('.flt[aria-pressed="true"]')?.dataset.f||'all'; const s=q.value.trim().toLowerCase(); let shown=0;
+[...grid.children].forEach(el=>{ const okF=f==='all'||el.dataset.era===f; const okQ=!s||el.dataset.title.includes(s); el.hidden=!(okF&&okQ); if(okF&&okQ) shown++; });
+status.textContent = shown===BOOKS.length ? '' : (shown ? `Showing ${shown} of ${BOOKS.length} reading blocks.` : 'No reading blocks match — try another filter or clear the search.'); }
+btns.forEach(b=>b.addEventListener('click',()=>{btns.forEach(x=>x.setAttribute('aria-pressed','false'));b.setAttribute('aria-pressed','true');apply();}));
+q.addEventListener('input',apply);
 </script>
 </body>
 </html>
