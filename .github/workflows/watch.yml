@@ -14,31 +14,45 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
+
       - name: Check archives for new posts
         id: check
+        shell: bash
         run: |
-          NEW_JSON=$(python3 scripts/check_new_posts.py --new-only)
-          echo "new_json=$NEW_JSON" >> "$GITHUB_OUTPUT"
-          COUNT=$(echo "$NEW_JSON" | python3 -c "import json,sys; print(sum(len(v) for v in json.load(sys.stdin).values()))")
+          set +e
+          python3 scripts/check_new_posts.py --new-only > "$RUNNER_TEMP/new.json"
+          status=$?
+          set -e
+          echo "script exit status: $status"
+          cat "$RUNNER_TEMP/new.json"
+          COUNT=$(python3 -c "import json,sys; print(sum(len(v) for v in json.load(open(sys.argv[1])).values()))" "$RUNNER_TEMP/new.json")
           echo "count=$COUNT" >> "$GITHUB_OUTPUT"
+          if [ "$status" -ne 0 ] && [ "$COUNT" = "0" ]; then
+            echo "::error::Could not reach any archive (see stderr above)."
+            exit "$status"
+          elif [ "$status" -ne 0 ]; then
+            echo "::warning::One publication could not be fetched; reporting the rest."
+          fi
+
       - name: Open update issue
         if: steps.check.outputs.count != '0'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NEW_JSON: ${{ steps.check.outputs.new_json }}
+          NEW_JSON_FILE: ${{ runner.temp }}/new.json
+          ISSUE_FILE: ${{ runner.temp }}/issue.md
         run: |
-          echo "$NEW_JSON" | python3 -c "
+          python3 - <<'PY'
           import json, os
-          new = json.loads(os.environ['NEW_JSON'])
-          labels = {'ascend': 'Ascend Book Club', 'closereads': 'Close Reads'}
-          lines = ['New posts since the last snapshot:', '']
+          new = json.load(open(os.environ["NEW_JSON_FILE"]))
+          labels = {"ascend": "Ascend Book Club", "closereads": "Close Reads"}
+          lines = ["New posts since the last snapshot:", ""]
           for pub, posts in new.items():
-              lines.append(f\"## {labels.get(pub, pub)}\")
+              lines.append(f"## {labels.get(pub, pub)}")
               for p in posts:
-                  lines.append(f\"- {p['date']} | [{p['title']}]({p['url']})\")
-              lines.append('')
-          lines += ['Update: run \`python3 scripts/check_new_posts.py --update\`, file the new episodes on the site, commit, push (Pages redeploys).']
-          open('/tmp/issue.md', 'w').write(chr(10).join(lines))
-          "
-          gh issue create --title "New club posts to file ($(date +%F))" --body-file /tmp/issue.md
+                  lines.append(f"- {p['date']} | [{p['title']}]({p['url']})")
+              lines.append("")
+          lines.append("Update: run `python3 scripts/check_new_posts.py --update`, file the new episodes on the site, commit, push (Pages redeploys).")
+          open(os.environ["ISSUE_FILE"], "w").write("\n".join(lines) + "\n")
+          PY
+          gh issue create --title "New club posts to file ($(date +%F))" --body-file "$ISSUE_FILE"

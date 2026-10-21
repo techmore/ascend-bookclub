@@ -1,0 +1,129 @@
+/* Ascend Book Club Library — shared styles.
+   The olive/stone palette is exposed as CSS variables (oklch channels) so
+   Tailwind utility classes (see assets/tailwind.config.js) and dark mode
+   share a single source of truth. */
+
+:root {
+  color-scheme: light dark;
+  /* olive: page chrome. 300 = page background, 50 = cards/nav, 600-700 = primary buttons */
+  --olive-50: 97.73% 0.0054 117.92;
+  --olive-100: 95.09% 0.0134 115.84;
+  --olive-200: 90.20% 0.0232 117.63;
+  --olive-300: 82.52% 0.0345 116.34;
+  --olive-400: 73.59% 0.0492 116.81;
+  --olive-500: 64.26% 0.0588 117.06;
+  --olive-600: 54.54% 0.0616 116.19;
+  --olive-700: 46.42% 0.0493 117.00;
+  --olive-800: 39.89% 0.0355 116.41;
+  --olive-900: 35.57% 0.0284 116.00;
+  --olive-950: 24.22% 0.0185 116.99;
+  /* stone: text. 800 = body text, 500-700 = secondary text */
+  --stone-50: 98.48% 0.0013 106.42;
+  --stone-100: 96.99% 0.0013 106.42;
+  --stone-200: 92.32% 0.0026 48.72;
+  --stone-300: 86.87% 0.0043 56.37;
+  --stone-400: 71.61% 0.0091 56.26;
+  --stone-500: 50.00% 0.0116 58.07;
+  --stone-600: 42.00% 0.0096 73.64;
+  --stone-700: 35.00% 0.0087 67.56;
+  --stone-800: 26.85% 0.0063 34.30;
+  --stone-900: 21.61% 0.0061 56.04;
+  --shadow: 39.89% 0.0355 116.41;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Dark theme keeps the same roles: 300 = page, 50 = surfaces, 700 = primary. */
+    --olive-50: 30.00% 0.0180 117.00;
+    --olive-100: 27.00% 0.0170 117.00;
+    --olive-200: 34.00% 0.0200 117.00;
+    --olive-300: 20.50% 0.0150 117.00;
+    --olive-400: 44.00% 0.0350 117.00;
+    --olive-500: 56.00% 0.0450 117.00;
+    --olive-600: 74.00% 0.0520 117.00;
+    --olive-700: 82.00% 0.0450 117.00;
+    --olive-800: 88.00% 0.0300 117.00;
+    --olive-900: 92.00% 0.0200 117.00;
+    --olive-950: 96.00% 0.0100 117.00;
+    --stone-50: 20.00% 0.0060 56.00;
+    --stone-100: 25.00% 0.0060 56.00;
+    --stone-200: 32.00% 0.0050 56.00;
+    --stone-300: 40.00% 0.0045 56.00;
+    --stone-400: 55.00% 0.0090 56.00;
+    --stone-500: 72.00% 0.0100 58.00;
+    --stone-600: 80.00% 0.0090 73.00;
+    --stone-700: 87.00% 0.0080 67.00;
+    --stone-800: 93.00% 0.0060 34.00;
+    --stone-900: 97.00% 0.0050 56.00;
+    --shadow: 0% 0 0;
+  }
+}
+
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  font-family: Inter, system-ui, sans-serif;
+  background-color: oklch(var(--olive-300));
+  color: oklch(var(--stone-800));
+  font-size: 1rem;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+}
+h1, h2, h3 { font-family: "Instrument Serif", serif; line-height: 1.2; text-wrap: balance; }
+.cover { font-family: "Instrument Serif", serif; }
+.card { transition: transform .15s ease, box-shadow .15s ease; }
+.card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px -12px oklch(var(--shadow) / .45); }
+
+/* Keyboard focus: visible on every interactive element, invisible for mouse clicks. */
+:focus-visible {
+  outline: 3px solid oklch(var(--olive-700));
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+/* Links inside prose always get an underline on hover/focus for discoverability. */
+main a:not([class*="rounded"]):hover,
+main a:not([class*="rounded"]):focus-visible { text-decoration-thickness: 2px; }
+
+/* Skip link: first tab stop on every page. */
+.skip-link {
+  position: absolute;
+  left: 0.5rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.5rem 0.9rem;
+  border-radius: 0.5rem;
+  background: oklch(var(--olive-700));
+  color: oklch(var(--olive-50));
+  font-weight: 600;
+  transition: top .15s ease;
+}
+.skip-link:focus { top: 0.5rem; outline-offset: 0; }
+
+/* Site nav: wraps on narrow screens instead of overflowing. */
+.site-nav > div { flex-wrap: wrap; min-height: 3.5rem; height: auto; padding-top: .25rem; padding-bottom: .25rem; }
+.site-nav a { white-space: nowrap; }
+.site-nav a[aria-current="page"] { font-weight: 600; }
+
+/* Footer */
+.site-footer { border-top: 1px solid oklch(var(--olive-400) / .6); padding: 1.5rem 1rem; text-align: center; font-size: .8rem; color: oklch(var(--stone-500)); }
+.site-footer a { text-decoration: underline; text-underline-offset: 3px; }
+
+/* Filter chips on the library index */
+.flt[aria-pressed="true"] { background-color: oklch(var(--olive-700)); color: oklch(var(--olive-50)); border-color: oklch(var(--olive-700)); }
+.flt { border: 1px solid oklch(var(--olive-400)); background-color: oklch(var(--olive-100)); }
+
+/* Inputs */
+input::placeholder { color: oklch(var(--stone-500)); opacity: 1; }
+input, select, textarea { color: inherit; background-color: oklch(var(--olive-50)); }
+
+/* Don't animate for users who asked for less motion. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .card, .skip-link { transition: none; }
+  .card:hover { transform: none; }
+}
+
+@media print {
+  nav, .skip-link, .flt { display: none !important; }
+  body { background: #fff; color: #000; }
+}
