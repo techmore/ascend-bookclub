@@ -107,6 +107,7 @@ main a:not([class*="rounded"]):focus-visible { text-decoration-thickness: 2px; }
 /* Footer */
 .site-footer { border-top: 1px solid oklch(var(--olive-400) / .6); padding: 1.5rem 1rem; text-align: center; font-size: .8rem; color: oklch(var(--stone-500)); }
 .site-footer a { text-decoration: underline; text-underline-offset: 3px; }
+.site-footer a[href="https://techmore.github.io/"] { color: oklch(var(--stone-600)); }
 
 /* Filter chips on the library index */
 .flt[aria-pressed="true"] { background-color: oklch(var(--olive-700)); color: oklch(var(--olive-50)); border-color: oklch(var(--olive-700)); }
