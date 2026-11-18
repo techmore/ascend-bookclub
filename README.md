@@ -66,3 +66,5 @@ Pushes to `main` deploy to GitHub Pages via `.github/workflows/pages.yml`.
 ## Screenshots
 
 _Add screenshots of the library index (light and dark) here._
+
+Part of [Techmore](https://techmore.github.io/pages/repos/).
